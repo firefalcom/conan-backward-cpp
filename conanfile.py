@@ -2,7 +2,7 @@ from conans import ConanFile, CMake, tools
 
 class BackwardCppConan(ConanFile):
     name = "backward-cpp"
-    version = "1.4"
+    version = "1.5"
     license = "MIT"
     author = "François-Xavier Bourlet"
     url = "https://github.com/bombela/backward-cpp"
