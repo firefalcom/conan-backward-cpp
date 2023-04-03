@@ -1,4 +1,5 @@
 from conans import ConanFile, CMake, tools
+from conan.tools.files import copy, get
 
 class BackwardCppConan(ConanFile):
     name = "backward-cpp"
@@ -10,9 +11,8 @@ class BackwardCppConan(ConanFile):
     topics = ("stacktrace", "debug")
 
     def source(self):
-        self.run("git clone https://github.com/bombela/backward-cpp")
-        self.run("cd backward-cpp && git checkout v%s" % self.version)
-
+        get(self, **self.conan_data["sources"][self.version][0], strip_root=True,destination="backward-cpp")
+        
     def package(self):
         self.copy("*.hpp", dst="include", src="backward-cpp/" )
         self.copy("*.cpp", dst="src", src="backward-cpp/" )
