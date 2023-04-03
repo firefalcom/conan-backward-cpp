@@ -1,0 +1,4 @@
+sources:
+  "1.5":
+    - url: "https://github.com/bombela/backward-cpp/archive/refs/tags/v1.5.tar.gz"
+      sha256: "faf7d4fe7ca65117ed4fe7be9bff9628927bd95b49f71df63d5f99af233d1915"
