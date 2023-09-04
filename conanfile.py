@@ -1,4 +1,6 @@
-from conans import ConanFile, CMake, tools
+from conan import ConanFile
+from conan.tools.files import copy
+from os.path import join
 
 class BackwardCppConan(ConanFile):
     name = "backward-cpp"
@@ -14,11 +16,11 @@ class BackwardCppConan(ConanFile):
         self.run("cd backward-cpp && git checkout v%s" % self.version)
 
     def package(self):
-        self.copy("*.hpp", dst="include", src="backward-cpp/" )
-        self.copy("*.cpp", dst="src", src="backward-cpp/" )
+        copy(self, "backward.hpp", join(self.source_folder, "backward-cpp"), join(self.package_folder, "include"))
+        copy(self, "backward.cpp", join(self.source_folder, "backward-cpp"), join(self.package_folder, "include"))
 
     def package_id(self):
-        self.info.header_only()
+        self.info.clear()
 
     def package_info(self):
         self.cpp_info.includedirs = ['include']
